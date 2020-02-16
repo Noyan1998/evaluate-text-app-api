@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+require('dotenv').config();
 
 const app = express();
 app.use(bodyParser.json());
@@ -12,8 +13,8 @@ app.get('/', (req, res) => {
 
 var AYLIENTextAPI = require('aylien_textapi');
 var textapi = new AYLIENTextAPI({
-  application_id: 'a8a8d48b',
-  application_key: '1249e3696d2279ea9f379f346429f99b'
+  application_id: process.env.API_ID,
+  application_key: process.env.API_KEY
 });
 
 app.post('/text', (req, res) => {
